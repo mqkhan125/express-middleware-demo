@@ -1,5 +1,4 @@
 import { useState } from "react"
-import axios from 'axios'
 
 
 
@@ -8,8 +7,9 @@ const App = () => {
   const [data, setData] = useState(null)
 
   const callApi = async(type) => {
-    const res = await axios(`http://localhost:5000/api/${type}`);
-    setData(res)
+    const res = await fetch(`http://localhost:5000/api/${type}`);
+    const result = await res.json()
+    setData(result)
   }  
 
   return (
@@ -17,7 +17,7 @@ const App = () => {
       <h1 className="text-3xl font-bold mb-6">Middleware Demo</h1>
       <div className="flex gap-4">
         <button
-          onClick={() => callApi("student")}
+          onClick={() => callApi("students")}
           className="bg-blue-500 text-white px-4 py-2 rounded"
         >
           Student
