@@ -1,5 +1,4 @@
 const auth = (req, res, next) => {
-    console.log('auth mode')
     req.user = {userId: 1, role : "student"}
 
     if(req.user.role === "student"){
